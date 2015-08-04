@@ -81,7 +81,7 @@ In other words, type systems define the interface of the different parts that co
 Their main purposes are to prevent the occurrence of execution errors and to document code (\cite{type_systems}).
 In dynamically typed languages, such as Ruby and JavaScript, the definition of the type of an expression only happens at run time.
 On the other hand, statically typed programming languages, such as Java and C\#, require types to be defined during compile time, either explicitly declared by the programmer or inferred by the compiler (\cite{Milner78}).
-In such languages, the compiler can check for most type errors statically.
+In such languages, the compiler can check for most errors statically. 
 
 Discussions about what is the best type system for a particular situation have become increasingly important in recent years due to the rapid popularization of dynamically typed languages. 
 According to the TIOBE Programming Community Index (\cite{tiobe}), a well-known ranking that measures the popularity of programming languages, 27\% of the programming languages used in industry are dynamically typed. 
@@ -104,15 +104,17 @@ Some languages try to combine characteristics from both static and dynamic type 
 Although Groovy is mostly a dynamically typed language, it gives programmers the option to use type annotations as a means to document their code.
 It is also possible to turn static type checking on so the compiler can find type errors before execution.
 This allows developers to choose the most appropriate paradigm for each situation.
+In addition to that, some statically typed languages, such as Java or C\#, allow the programmer to use casts in order to bypass type checking of an expression.
 
 
 \section{Motivation}
 Although the tradeoffs between different typing paradigms have been widely researched, specially though controlled experiments, it is still unclear how programmers actually perceive these tradeoffs.
-For example, assuming that typed programs are more reliable, but untyped programs can be written faster, which factor would be considered more relevant by programmers and in which contexts?
+For example, assuming that statically typed programs are more reliable, but dynamically typed programs can be written faster, which factor would be considered more relevant by programmers and in which contexts?
 
 Understanding the point of view of programmers about the use of types is an important matter.
-Programming language developers can consider this information in their design so they can develop the most appropriate features for their target audience.
-Tools can be created or improved to overcome weaknesses of languages. 
+Tools can be created or improved to support programmers in the use of types. 
+Programming language developers can consider that information in their design so they can develop the most appropriate features for their target audience.
+For example, dynamically typed languages can introduce type annotations in order to help programmers document their code in the scenarios where programmers judge this feature more useful.
 Finally, programmers can benefit from this knowledge when choosing programming languages or typing paradigms for a given context.
 
 Finding the programmers' point of view about the use of types is far from trivial.
@@ -175,7 +177,7 @@ We start by discussing the tradeoffs of different typing paradigms in Section \r
 In Section \ref{sec:groovy}, we introduce the main concepts of the Groovy language, including its optional type system.
 
 \section{Types and Related Work\label{sec:types}}
-In the literature, it is common to find the following arguments in favor of typed languages (\cite{type_systems, should_your_specification_language_be_typed, mayer2012static, bruch2009learning}):
+In the literature, it is common to find the following arguments in favor of statically typed languages (\cite{type_systems, should_your_specification_language_be_typed, mayer2012static, bruch2009learning}):
 
 \begin{itemize}
 	\item They allow compilers to find type errors statically, thus decreasing the occurrence of defects on a system
@@ -185,7 +187,7 @@ In the literature, it is common to find the following arguments in favor of type
 	\item They allow modern development environments, such as Eclipse and IDEA, to use the information provided by types to assist programmers with productivity functionalities such as code completion or integrated documentation
 \end{itemize}
 
-Conversely, untyped languages also have advantages (\cite{types_and_programming_languages, dynamically_typed_languages}):
+Conversely, dynamically languages also have advantages (\cite{types_and_programming_languages, dynamically_typed_languages}):
 \begin{itemize}
 	\item They tend to lead programmers to code faster by eliminating the repetitive work of declaring types
 	\item They allow programmers to focus on the problem to be solved rather than on the rules of the language 
@@ -213,7 +215,7 @@ In a follow up study by \cite{hanenberg_icpc}, the authors obtained opposite con
 They compared the performance of two groups of developers in maintenance tasks. 
 The first group used Java, a statically typed language, and the other used Groovy, but restricting developers to use only untyped declarations in order to simulate a dynamically typed version of Java.
 In this case, the group using the statically typed language, Java, was much more productive.
-This contradiction with a previous work reinforces the argument that the results of controlled studies alone are not reliable enough for this type of study.
+The fact that this study resulted in different with a previous work reinforces the argument that the results of controlled studies alone are not reliable enough for this type of study.
 
 % Documentation GOOD
 In a recent experiment, \cite{Hanenberg13} studied the impact of the use of types on the development time of programmers while performing tasks on an undocumented API.
@@ -238,7 +240,7 @@ The studies discussed above present very different and often contradictory resul
 The impact of the use of types on the development of software systems is a very complex topic and depends on a wide range of factors.
 Although controlled experiments are capable of analyzing this question in detail, they might suffer heavy interference from external factors, such as the selection of the groups and the background of the subjects.
 Moreover, these studies provide no visibility on how programmers perceive these results.
-For example, assuming that typed programs are more reliable, but untyped programs can be written faster, which factor would be considered more relevant by programmers and in which contexts?
+For example, assuming that typed programs are more reliable, but dynamically typed programs can be written faster, which factor would be considered more relevant by programmers and in which contexts?
 
 A recent work published by \cite{Meyerovich13} reports several prominent findings about the adoption of languages by programmers.
 Based on a combination of the analysis of a large dataset of source code repositories and multiple surveys, the authors were able to understand which factors influence the adoption of programming languages.
@@ -1558,7 +1560,7 @@ Because of this, we were expecting programmers to actually use more types in tes
 Perhaps, although programmers use test classes as documentation, they might not write them with this goal in mind.
 
 An alternative explanation for the fact that scripts and tests are typed less frequently is that most of them are probably simpler than main classes.
-As found in the recent work of Hanenberg et al.(\cite{Hanenberg13}), untyped code potentially has a positive impact on the development time of easier tasks.
+As found in the recent work of Hanenberg et al.(\cite{Hanenberg13}), dynamically code potentially has a positive impact on the development time of easier tasks.
 In such case, programmers might not type their declarations in scripts or test classes since this would allow them to finish their tasks faster.
 
 % Q3
@@ -1584,11 +1586,11 @@ Second, even if these metrics are a good indicative of the necessity of better m
 \subsection*{Q5: In frequently changed code, do developers prefer typed or untyped declarations?\label{discussion-q5}}
 In frequently changed code, there are arguments in favor and against using types.
 Since types act as documentation, programmers might use them to make code more maintainable and easier to change  (\cite{should_your_specification_language_be_typed}).
-On the other hand, untyped code is simpler and can potentially be changed faster (\cite{gradual_typing}).
+On the other hand, untyped source code is simpler and can potentially be changed faster (\cite{gradual_typing}).
 The results presented in Section \ref{sec:results-changes} however suggests that the latter is considered more often than the former.
 
 In most projects, the usage of untyped declarations grows as the frequency of changes in a file increases.
-Apparently, programmers understand that untyped code makes maintenance tasks easier.
+Apparently, programmers understand that untyped source code makes maintenance tasks easier.
 One can argue that the causal relationship is the opposite, i.e., these files have to be changed more often due to the use of untyped declarations.
 However, it is very unlikely that programmers would not notice that untyped declarations would be causing such problems and would not add types to those declarations in order to fix them.
 
@@ -1640,7 +1642,7 @@ In this chapter, we show the main conclusions of this study in Section \ref{sec:
 
 \section{Conclusions\label{sec:conclusion}}
 Type systems is an important topic in software engineering and is becoming even more popular with the growing adoption of dynamically typed languages, such as JavaScript and Ruby.
-While using types potentially leads to more reliable and maintainable code, untyped programs might be faster to write and easier to change.
+While using types potentially leads to more reliable and maintainable code, dynamically typed programs might be faster to write and easier to change.
 This dissertation presented a study with the goal of finding how programmers of an optionally typed language perceive these tradeoffs.
 Through the large scale analysis of the source code of 6638 projects written in Groovy we were able to find in which situations programmers preferred the usage of types or not.
 We found the following results:
