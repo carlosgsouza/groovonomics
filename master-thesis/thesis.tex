@@ -81,7 +81,7 @@ In other words, type systems define the interface of the different parts that co
 Their main purposes are to prevent the occurrence of execution errors and to document code (\cite{type_systems}).
 In dynamically typed languages, such as Ruby and JavaScript, the definition of the type of an expression only happens at run time.
 On the other hand, statically typed programming languages, such as Java and C\#, require types to be defined during compile time, either explicitly declared by the programmer or inferred by the compiler (\cite{Milner78}).
-In such languages, the compiler can check for type errors statically.
+In such languages, the compiler can check for most type errors statically.
 
 Discussions about what is the best type system for a particular situation have become increasingly important in recent years due to the rapid popularization of dynamically typed languages. 
 According to the TIOBE Programming Community Index (\cite{tiobe}), a well-known ranking that measures the popularity of programming languages, 27\% of the programming languages used in industry are dynamically typed. 
@@ -116,8 +116,8 @@ Tools can be created or improved to overcome weaknesses of languages.
 Finally, programmers can benefit from this knowledge when choosing programming languages or typing paradigms for a given context.
 
 Finding the programmers' point of view about the use of types is far from trivial.
-Controlled experiments hardly reproduce real life situations, where many experienced programmers interact through a long period of time to build large and complex software systems \cite{Wohlin2012}.
-Also, one can not find the point of view of programmers about types by simply analyzing the programming language they choose since there are many other factors which might influence such choice.
+Controlled experiments hardly reproduce real life situations, where many experienced programmers interact through a long period of time to build large and complex software systems '\cite{Wohlin2012}'.
+Also, one cannot find the point of view of programmers about types by simply analyzing the programming language they choose since there are many other factors which might influence such choice.
 
 
 
@@ -194,7 +194,7 @@ Conversely, untyped languages also have advantages (\cite{types_and_programming_
 
 The impacts of different typing strategies have been widely studied in the literature.
 In an experiment conducted by \cite{Prechelt98}, it was possible to observe a positive impact when using type checking on procedure arguments.
-In this experiment, g40 programmers were split in two groups and asked to perform two non trivial tasks based on an existing API.
+In this experiment, 40 programmers were split into two groups and asked to perform two non trivial tasks based on an existing API.
 One group used ANSI C, which check types statically.
 Meanwhile, the other group used a dialect of C which did not perform type checking (although types were still declared).
 The group using the C dialect with type checking produced less defects, were able to find errors more quickly and were more productive than the other group.
@@ -245,7 +245,7 @@ Based on a combination of the analysis of a large dataset of source code reposit
 In particular, they report two interesting results involving type systems.
 First, they found evidence that intrinsic factors, including the type system of a language, are only of secondary importance for language adoption.
 Extrinsic and social factors, such as open source libraries availability and existing team experience, are far more important in this case.
-This result shows that one can not determine the popularity of typing paradigms based solely on language popularity since in most cases languages are chosen because of an extrinsic factor.
+This result shows that one cannot determine the popularity of typing paradigms based solely on language popularity since in most cases languages are chosen because of an extrinsic factor.
 Second, \cite{Meyerovich13} shows that programmers prefer static typing as a means to increase the readability of their code rather than to provide compile time type checking.
 They seem to prefer unit tests as a means to increase the reliability of a program over static type checking.
 However, it is important to say that these results might be biased in favor of dynamically typed languages since they were based on a survey conducted among students of a web development course.
@@ -470,7 +470,7 @@ In Section \ref{questions}, we present five research questions that guide our an
 Section \ref{data-collection} shows the data collection procedure and Section \ref{dataset} characterizes the obtained dataset.
 Finally, the analysis procedure is presented in Section \ref{analyzer}.
 
-\section{Research Questoins\label{questions}}
+\section{Research Questions\label{questions}}
 We aim to answer the following research questions about the usage of types by Groovy programmers:
 
 \begin{itemize}
@@ -644,7 +644,7 @@ Number of Developers & Fraction of Projects\tabularnewline
 \section{Static Code Analyzer\label{analyzer}}
 In order to understand in which situations programmers use types, we developed a static code analyzer based on the Groovy metaprogramming library.
 This analyzer is capable of retrieving the declaration information of parameters and returns of methods, parameters of constructors, fields and local variables.
-In addition, the analyzer can tell if a declaration is part of a test class or a script and what is its visibility.
+In addition, the analyzer can tell if a declaration is part of a test class or a script and the corresponding visibility.
 
 A relevant decision we made was not to compile projects, which would require all dependencies to be resolved.
 This is not feasible given the size of our dataset.
@@ -676,7 +676,7 @@ The usage of types according to the kind and visibility of declarations are pres
 Section \ref{sec:results-tests} shows how types are used in test and functional classes while Section \ref{sec:results-scripts} compares the usage of types in script and class files.
 We study the influence of programmers' background in Section \ref{sec:results-background} and how types are used according to age, size and number of commits of projects in Section \ref{sec:results-maturity}.
 Finally, we analyze the usage of types according to frequency of changes of files in Section \ref{sec:results-changes}.
-In this section we focus on the presentation and on the statistical treatment of the obtained results.
+In this chapter we focus on the presentation and on the statistical treatment of the obtained results.
 Their interpretation is left to Chapter \ref{discussion}.
 
 \section{Overall Result\label{sec:results-overall}}
@@ -713,7 +713,7 @@ About 95\% of them have less than 1000 lines of code and 22\% of them have less 
 In such projects, it is easier to be consistent on the typing strategy since there are just a few declarations.
 We initially considered not including these projects in the rest of our analysis since they could not represent well the entire population of Groovy projects.
 However, doing so did not alter the results significantly and we decided to include all projects in our analysis regardless of their size.
-In the rest of this section, this data will be presented in more detail so we can understand which factors lead programmers to use types or not.
+In the rest of this chapter, we will present results in more detail so we can understand which factors lead programmers to use types or not.
 
 
 % TYPE
@@ -1131,7 +1131,7 @@ These tables are divided in three parts, each one corresponding to the compariso
 
 There are significant differences in the usage of types between all groups.
 These differences, however, are not as clear as those found in the previous anlayses.
-Let's start with the comparison between projects in the \emph{Static and Dynamic} and the \emph{Dynamic Only} groups.
+Let us start with the comparison between projects in the \emph{Static and Dynamic} and the \emph{Dynamic Only} groups.
 There are significant differences only in private declarations and declarations of fields.
 Still, these differences are not very large, $(0.01,0.08)$ for fields and $(0.02,0.09)$ for private declarations.
 All in all, these two groups present very similar behavior when typing their declarations, apart from those two exceptions.
