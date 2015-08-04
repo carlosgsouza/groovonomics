@@ -1462,7 +1462,6 @@ Variable					& Other			& 5622 	& 0.29 		& 0.17	& 0.32 \\
 This section investigates whether programmers prefer to type their declarations in frequently changed code or not.
 Only the mature projects defined in the previous section are considered since we would not be able to obtain meaningful results from small and young projects.
 
-We found that in most of the mature projects programmers prefer untyped declarations in frequently changed code.
 We calculated the Spearman correlation coefficient between the frequency of changes of a file and the usage of types in that file for all mature projects.
 In projects where types are used more often in frequently changed files, this coefficient is positive, and negative when untyped declarations are preferred.
 Figure \ref{fig:change_spearman} displays the cumulative distribution of this coefficient across the mature projects dataset.
@@ -1506,13 +1505,13 @@ We provide several hypotheses with the goal of identifying future research topic
 
 % Q1
 \subsection*{Q1: Do programmers use types more often in the interface of their modules?\label{discussion-q1}}
-The analysis of the usage of types by kind and visibility of declarations, presented in Sections \ref{sec:results-type} and \ref{sec:results-visibility}, provides clear evidence that the answer for Q1 is affirmative.
+The analysis of the usage of types by kind and visibility of declarations, presented in Sections \ref{sec:results-type} and \ref{sec:results-visibility}, provides  evidence that the answer for Q1 is affirmative.
 Private declarations are typed less often than protected and public declarations.
 Also, fields, methods and constructors are typed more often than local variables.
 Although fields are significantly less typed than methods and constructors, this can be explained by the fact that most fields are declared privately as shown in Section \ref{dataset}.
 In Groovy, similar to what happens with Java, interactions with fields of other modules usually happen through accessor methods.
 
-While it is clear that module definitions are typed more often, the cause for such phenomena is still open to discussion.
+While it seems that module definitions are typed more often, the cause for such phenomena is still open to discussion.
 We believe that the main motivation for this is the implicit documentation provided by types.
 In these scenarios, types provide useful hints about the behavior of modules (\cite{Curtis1987}) and define pre and post condition of contracts
 \cite{Meyer88, Meijer04, Wadler04, Plosch97, Flanagan2006, Furr09}.
@@ -1589,9 +1588,9 @@ On the other hand, untyped source code is simpler and can potentially be changed
 The results presented in Section \ref{sec:results-changes} however suggests that the latter is considered more often than the former.
 
 In most projects, the usage of untyped declarations grows as the frequency of changes in a file increases.
-Apparently, programmers understand that untyped source code makes maintenance tasks easier.
-One can argue that the causal relationship is the opposite, i.e., these files have to be changed more often due to the use of untyped declarations.
-However, it is very unlikely that programmers would not notice that untyped declarations would be causing such problems and would not add types to those declarations in order to fix them.
+A possible explanation for this is that, in such projects, programmers understand that untyped source code makes maintenance tasks easier.
+On the other hand, one can argue that the causal relationship is the opposite, i.e., these files have to be changed more often due to the use of untyped declarations.
+However, since the number of projects for which a significant correlation (or inverse correlation) can be observed is not very expressive, about 40\% of the data set, it is difficult to generalize these results.
 
 
 \section{Threats to Validity\label{threats}}
@@ -1602,7 +1601,14 @@ Perhaps the most relevant internal threat to our study is that in a large scale 
 In Section \ref{sec:results-background} we consider that the GitHub portfolio of a programmer represents well his experience with other languages and type systems, but this might not be true for all programmers.
 They may have projects in their portfolio that they have not worked on or projects hosted elsewhere written in other languages.
 There is also the possibility of a programmer having multiple GitHub accounts with different languages in each one, causing such a programmer to be measured twice with different inferred backgrounds.
-Due to the large number of programmers considered in our study, we expect these special cases not to have a large influence on the results.
+
+
+We use declaration type and visibility to identify declarations that are part of a module interface in Section \ref{discussion-q1}. 
+However, programmers might not follow these conventions as expected.
+Also, in Groovy, methods for which the visibility was not explicitly defined are considered public.
+In our analysis, such methods are considered as part the module interfaces regardless of the intentions of the programmer.
+We expect the special cases described above not to have a large influence on the final results due to the large number of programmers and projects considered in our study, 
+
 
 There are other factors that might have influenced programmers besides the ones considered in this study.
 Some frameworks require programmers to use typed or untyped declarations in some cases.
@@ -1621,8 +1627,7 @@ The behavior observed for Groovy projects can be very different in other languag
 Most languages are not like Groovy and feature either static or dynamic typing, forcing programmers to choose a single typing strategy for all scenarios in a single project.
 Even a language with a hybrid typing paradigm might implement different strategies which will be perceived differently by the programmers of that language.
 Finally, the tools used to code in a given language might influence programmers to chose different type strategies.
-
-
+These threats illustrate how difficult it is to elaborate experimental studies that cover a wide number of programming languages, scenarios and tools.
 
 
 
