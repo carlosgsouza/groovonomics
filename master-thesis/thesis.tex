@@ -187,7 +187,7 @@ In the literature, it is common to find the following arguments in favor of stat
 	\item They allow modern development environments, such as Eclipse and IDEA, to use the information provided by types to assist programmers with productivity functionalities such as code completion or integrated documentation
 \end{itemize}
 
-Conversely, dynamically languages also have advantages (\cite{types_and_programming_languages, dynamically_typed_languages}):
+Conversely, dynamically typed languages also have advantages (\cite{types_and_programming_languages, dynamically_typed_languages}):
 \begin{itemize}
 	\item They tend to lead programmers to code faster by eliminating the repetitive work of declaring types
 	\item They allow programmers to focus on the problem to be solved rather than on the rules of the language 
@@ -1505,7 +1505,7 @@ We provide several hypotheses with the goal of identifying future research topic
 
 % Q1
 \subsection*{Q1: Do programmers use types more often in the interface of their modules?\label{discussion-q1}}
-The analysis of the usage of types by kind and visibility of declarations, presented in Sections \ref{sec:results-type} and \ref{sec:results-visibility}, provides  evidence that the answer for Q1 is affirmative.
+The analysis of the usage of types by kind and visibility of declarations, presented in Sections \ref{sec:results-type} and \ref{sec:results-visibility}, provides evidence that the answer for Q1 is affirmative.
 Private declarations are typed less often than protected and public declarations.
 Also, fields, methods and constructors are typed more often than local variables.
 Although fields are significantly less typed than methods and constructors, this can be explained by the fact that most fields are declared privately as shown in Section \ref{dataset}.
@@ -1558,7 +1558,7 @@ Because of this, we were expecting programmers to actually use more types in tes
 Perhaps, although programmers use test classes as documentation, they might not write them with this goal in mind.
 
 An alternative explanation for the fact that scripts and tests are typed less frequently is that most of them are probably simpler than main classes.
-As found in the recent work of Hanenberg et al.(\cite{Hanenberg13}), dynamically code potentially has a positive impact on the development time of easier tasks.
+As found in the recent work of Hanenberg et al.(\cite{Hanenberg13}), dynamically typed code potentially has a positive impact on the development time of easier tasks.
 In such case, programmers might not type their declarations in scripts or test classes since this would allow them to finish their tasks faster.
 
 % Q3
@@ -1607,7 +1607,7 @@ We use declaration type and visibility to identify declarations that are part of
 However, programmers might not follow these conventions as expected.
 Also, in Groovy, methods for which the visibility was not explicitly defined are considered public.
 In our analysis, such methods are considered as part the module interfaces regardless of the intentions of the programmer.
-We expect the special cases described above not to have a large influence on the final results due to the large number of programmers and projects considered in our study, 
+We expect the special cases described above not to have a large influence on the final results due to the large number of programmers and projects considered in our study. 
 
 
 There are other factors that might have influenced programmers besides the ones considered in this study.
